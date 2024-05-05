@@ -1,0 +1,4 @@
+Step 1. Just copy the both the Dataset files from the folder 'dataset' drugsComTest_raw.csv and drugsComTrain_raw.csv into the 'python notebook' folder
+Step 2. Open and Run the file 'drugs.ipynb'
+Step 3. Now there will be 2 new model files namely, 'passmodel.pkl' and 'tfidfvectorizer.pkl'. Copy these two files into the 'model' folder
+Step 4. Delete the copied Dataset files

@@ -1,0 +1,7 @@
+flask
+bs4
+joblib
+re
+pandas
+nltk
+

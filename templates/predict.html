@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction - Drug Recommendation System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Abril Fatface' rel='stylesheet'>
+</head>
+<style>
+    
+    body{
+        background-image: url('/static/images/bg.JPG');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .icon{
+        background-image: url('images/drug-icon.png');
+    }
+
+    header {
+        background-color: #3333334a; /* Header background color */
+        color: white; /* Header text color */
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .image-button {
+        display: inline-block;
+        background-color: #628ebd; /* Button background color */
+        color: white; /* Button text color */
+        border: none;
+        padding: 5px 5px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+
+
+    .image-button img {
+        vertical-align: middle;
+        margin-right: 10px; /* Spacing between image and text */
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Hover effect */
+    .image-button:hover {
+        background-color: #0056b3; /* New background color on hover */
+    }
+
+    nav {
+        display: flex;
+        margin-left: auto; 
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-right: 20px;
+    }
+
+    .big-font{
+        line-height: 0.9;
+        font-weight:500;
+        font-family:'Abril Fatface';font-size: 100px;
+        margin-left: 4cm;
+        margin-top: 4cm;
+        margin-bottom: 0cm;
+        padding-bottom: 0cm;
+    }
+    
+    .small-font{
+        line-height: 0.9;
+        font-weight:300;
+        font-family:'Abril Fatface';font-size: 40px;
+        margin-left: 4cm;
+        margin-top: 1cm;
+    }
+
+    .frame {
+        position: fixed;
+        top: 46%;
+        right: 2%;
+        left: 0%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0); /* Semi-transparent bluish-gray color */
+        border-radius: 20px;
+        margin-top: 4%;
+        margin-left: 65%;
+        padding-bottom: 400px;
+        height: 170px;
+        backdrop-filter: blur(5px); /* Apply blur effect */
+      }
+
+      .frame2 {
+        position: fixed;
+        top: 50%;
+        right: 10%; /* Adjust this value to position it as per your preference */
+        transform: translateY(-50%);
+        background-color: rgba(100, 120, 140, 0.6); /* Semi-transparent bluish-gray color */
+        border-radius: 20px;
+        margin-right: 15%;
+        width: 250px; /* Set the exact width of the frame */
+        height: 350px; /* Set the exact height of the frame */
+        backdrop-filter: blur(5px); /* Apply blur effect */
+      }
+      
+      .content {
+        overflow: hidden; /* Hide overflow to prevent images from expanding */
+      }
+      
+      .content img {
+        display: block;
+        max-width: 100%; /* Ensure images don't exceed frame width */
+        height: auto;
+        margin-bottom: 10px; /* Add some space between images */
+        border-radius: 20px; 
+      }
+
+      .content2 {
+        overflow: hidden; /* Hide overflow to prevent images from expanding */
+      }
+
+      .content2 img {
+        padding-right: 0%;
+        display: block;
+        max-width: 100%; /* Ensure images don't exceed frame width */
+        height: 280px;
+        margin-bottom: 10px; /* Add some space between images */
+        border-radius: 10px;
+        margin-left: 34.6%;
+      }
+      
+      .content3 {
+        overflow: hidden; /* Hide overflow to prevent images from expanding */
+        
+      }
+
+      .content3 img {
+        padding-right: 0%;
+        display: block;
+        max-width: 100%; /* Ensure images don't exceed frame width */
+        height: 280px;
+        margin-bottom: 10px; /* Add some space between images */
+        border-radius: 10px;
+        margin-left: 34.6%;
+      }
+
+      .input-header{
+        text-align: center;
+      }
+        
+      .mid-font{
+        margin-top: 10%;
+        line-height: 0.9;
+        font-family:'Abril Fatface';
+        font-size: 60px;
+        display: inline-block;
+        width: auto;
+    
+      }
+
+      .sub-text h1{
+        
+      }
+
+      .sub-text{
+        line-height: 0.9;
+        font-family:'Abril Fatface';
+        font-size: 130%;
+        margin-top: 0%;
+    
+      }
+
+      .prediction 
+      {
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white for readability */
+      border-radius: 15px; /* Rounded corners */
+      padding: 20px; /* Padding inside the box */
+      margin: 6% auto; /* Centering the box */
+      width: 80%; /* Appropriate width */
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Subtle shadow for depth */
+      backdrop-filter: blur(5px); /* Blurring the background slightly for focus */
+     }
+
+      .prediction h1, .prediction h2 {
+          color: #333; /* Dark grey for headers for better contrast */
+          font-family: 'Abril Fatface', cursive; /* Stylish font-family */
+      }
+
+      .prediction p, .prediction li {
+          color: #666; /* Lighter grey for text */
+          font-family: 'Arial', sans-serif; /* Readable font-family */
+          line-height: 1.6; /* Improved line spacing */
+      }
+
+      .prediction ul {
+          list-style-type: none; /* No bullets */
+          padding: 0; /* No padding */
+      }
+
+      .prediction li {
+        margin-bottom: 10px; /* Space between list items */
+        background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+        padding: 8px;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out; /* Ensures that all properties transition smoothly */
+        cursor: pointer; /* Ensures it appears clickable */
+      }
+      
+
+      .prediction li:hover 
+       {
+        transform: translateY(-3px); /* Lifts the item slightly */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds depth with shadow */
+        background: linear-gradient(145deg, #e7eff9, #cfd9e6); /* Changes background color */
+        
+        }
+
+      .prediction li::before {
+          content: "• ";
+          color: #628ebd; /* Theme color for bullet points */
+          font-size: large; /* Larger bullet points */
+      }
+
+      .take-input{
+        text-align: center;
+        align-items: center;
+      }
+
+      .placeholder{
+        text-align: center;
+      }
+
+      .text-input {
+        width: 200px; /* Initial width of the text input */
+        transition: width 0.3s ease; /* Transition for width change */
+        
+      }
+      
+      .text-input:focus {
+        width: 300px;
+        height: 100px; /* Expanded width when focused */
+      }
+      
+      .submit-button {
+        margin-top: 10px; /* Adjust as needed */
+        align-items: center;
+        display: grid;
+        justify-content: center;
+      }
+      
+      .button-56 {
+        align-items: center;
+        background-color: #fee6e3;
+        border: 2px solid #111;
+        border-radius: 8px;
+        box-sizing: border-box;
+        color: #111;
+        cursor: pointer;
+        display: flex;
+        font-family: Inter, sans-serif;
+        font-size: 16px;
+        height: 30px;
+        justify-content: center;
+        line-height: 24px;
+        max-width: 100%;
+        padding: 0 15px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+      
+      .button-56:after {
+        background-color: #111;
+        border-radius: 8px;
+        content: "";
+        display: block;
+        height: 30px;
+        left: 0;
+        width: 100%;
+        position: absolute;
+        top: -2px;
+        transform: translate(8px, 8px);
+        transition: transform .2s ease-out;
+        z-index: -1;
+      }
+      
+      .button-56:hover:after {
+        transform: translate(0, 0);
+      }
+      
+      .button-56:active {
+        background-color: #ffdeda;
+        outline: 0;
+      }
+      
+      .button-56:hover {
+        outline: 0;
+      }
+      
+      @media (min-width: 768px) {
+        .button-56 {
+          padding: 0 40px;
+        }
+      }
+     
+
+     
+</style>
+<body>
+    <header>
+        <a href="/" class="image-button">
+            <img src="/static/images/drug-icon.png" alt="Home" >
+        </a>
+
+        <nav>
+            <a href="/">HOME</a>
+            <a href="/input">GET STARTED</a>
+            <a href="/about">ABOUT</a>
+        </nav>
+    </header>
+
+    <div class="prediction">
+        <h1>Predicted Medical Condition:</h1>
+        <p>{{ condition }}</p>
+        
+        <h2>Top 3 Suggested Drugs:</h2>
+        <ul>
+            {% for drug in drugs %}
+              <li onclick="searchDrug('{{ drug }}')">{{ drug }}</li>
+            {% endfor %}
+        </ul>
+        </div>
+
+  <script>
+    function searchDrug(drugName) {
+        var query = encodeURIComponent(drugName); // Encode the drug name to ensure it's URL-safe
+        var url = "https://pharmeasy.in/search/all?name=" + query; // Construct the URL
+        window.open(url, '_blank'); // Open the URL in a new tab
+    }
+</script>
+
